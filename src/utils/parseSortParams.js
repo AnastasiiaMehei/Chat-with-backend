@@ -1,4 +1,4 @@
-import { SORT_ORDER } from '../constants/index.js';
+import { SORT_ORDER } from '../chats/index.js';
 
 const parseSortOrder = (sortOrder) => {
   const isKnownOrder = [SORT_ORDER.ASC, SORT_ORDER.DESC].includes(sortOrder);
@@ -7,18 +7,9 @@ const parseSortOrder = (sortOrder) => {
 };
 
 const parseSortBy = (sortBy) => {
-  const keysOfContact = [
-    '_id',
-    'name',
-    'phoneNumber',
-    'email',
-    'isFavourite',
-    'contactType',
-    'createdAt',
-    'updatedAt',
-  ];
+  const keysOfChat = ['_id', 'name', 'surname', 'createdAt', 'updatedAt'];
 
-  if (keysOfContact.includes(sortBy)) {
+  if (keysOfChat.includes(sortBy)) {
     return sortBy;
   }
 

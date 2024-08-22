@@ -1,18 +1,18 @@
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: Contacts app
+  title: Chats app
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  description: This is a documentation of contacts app
+  description: This is a documentation of chats app
 tags:
-  - name: Contacts
+  - name: Chats
   - name: Auth
     description: Auth operations.
 servers:
   - url: http://localhost:8080
-  - url: https://nodejs-hw-mongodb-2-wxns.onrender.com
+  # - url: https://nodejs-hw-mongodb-2-wxns.onrender.com
 paths:
   /auth/register:
     post:
@@ -180,13 +180,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '500':
           $ref: '#/components/responses/GeneralError'
-  /contacts:
+  /chats:
     get:
       tags:
-        - contacts
-      summary: Get list of contacts
-      operationId: getContacts
-      description: Get list of contacts with this endpoint
+        - chats
+      summary: Get list of chats
+      operationId: getChats
+      description: Get list of chats with this endpoint
       security:
         - bearerAuth: []
       parameters:
@@ -205,7 +205,7 @@ paths:
           schema:
             type: string
             example: name
-          description: All contact's fields can be mentioned. Default value - _id
+          description: All chat's fields can be mentioned. Default value - _id
         - in: query
           name: sortOrder
           schema:
@@ -230,7 +230,7 @@ paths:
             example: false
       responses:
         '200':
-          description: Successfully found contacts!
+          description: Successfully found chats!
           content:
             application/json:
               schema:
@@ -245,7 +245,7 @@ paths:
                     example: 200
                   message:
                     type: string
-                    example: Successfully found contacts!
+                    example: Successfully found chats!
                   data:
                     type: object
                     required:
@@ -260,7 +260,7 @@ paths:
                       data:
                         type: array
                         items:
-                          $ref: '#/components/schemas/contact'
+                          $ref: '#/components/schemas/chat'
                       page:
                         type: number
                         example: 1
@@ -283,10 +283,10 @@ paths:
           $ref: '#/components/responses/401'
     post:
       tags:
-        - contacts
-      summary: Create a new contact
-      operationId: createContact
-      description: Create a new contact with payload
+        - chats
+      summary: Create a new chat
+      operationId: createChat
+      description: Create a new chat with payload
       security:
         - bearerAuth: []
       requestBody:
@@ -297,38 +297,38 @@ paths:
               required:
                 - name
                 - phoneNumber
-                - contactType
+                - chatType
               properties:
                 name:
-                  description: Contact's name
+                  description: Chat's name
                   type: string
                   example: John Doe
                 phoneNumber:
-                  description: Contact's phone number
+                  description: Chat's phone number
                   type: string
                   example: '+1234567890'
                 email:
-                  description: Contact's email
+                  description: Chat's email
                   type: string
                   example: john.doe@example.com
                 isFavourite:
-                  description: Whether the contact is a favourite
+                  description: Whether the chat is a favourite
                   type: boolean
                   example: false
-                contactType:
-                  description: Contact's type
+                chatType:
+                  description: Chat's type
                   type: string
                   enum:
                     - work
                     - home
                     - personal
                 photo:
-                  description: Contact's photo
+                  description: Chat's photo
                   type: string
                   format: binary
       responses:
         '201':
-          description: Creates a contact
+          description: Creates a chat
           content:
             application/json:
               schema:
@@ -343,56 +343,56 @@ paths:
                     example: 201
                   message:
                     type: string
-                    example: Successfully created a contact!
+                    example: Successfully created a chat!
                   data:
                     type: object
-                    $ref: '#/components/schemas/contact'
+                    $ref: '#/components/schemas/chat'
         '401':
           $ref: '#/components/responses/401'
-  /contacts/{contactId}:
+  /chats/{chatId}:
     get:
       tags:
-        - contacts
-      summary: Get a contact by ID
-      operationId: getContactById
-      description: Retrieve a specific contact by its unique ID.
+        - chats
+      summary: Get a chat by ID
+      operationId: getChatById
+      description: Retrieve a specific chat by its unique ID.
       security:
         - bearerAuth: []
       parameters:
-        - name: contactId
+        - name: chatId
           in: path
           required: true
-          description: ID of the contact to fetch
+          description: ID of the chat to fetch
           schema:
             type: string
       responses:
         '200':
-          description: Contact found
+          description: Chat found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/contact'
+                $ref: '#/components/schemas/chat'
         '401':
           $ref: '#/components/responses/401'
         '404':
           $ref: '#/components/responses/NotFound'
     patch:
       tags:
-        - contacts
-      summary: Update a contact by ID
-      operationId: updateContactById
-      description: Update a specific contact by its unique ID.
+        - chats
+      summary: Update a chat by ID
+      operationId: updateChatById
+      description: Update a specific chat by its unique ID.
       security:
         - bearerAuth: []
       parameters:
-        - name: contactId
+        - name: chatId
           in: path
           required: true
-          description: ID of the contact to update
+          description: ID of the chat to update
           schema:
             type: string
       requestBody:
-        description: Contact data to update
+        description: Chat data to update
         required: true
         content:
           multipart/form-data:
@@ -407,7 +407,7 @@ paths:
                   type: string
                 isFavourite:
                   type: boolean
-                contactType:
+                chatType:
                   type: string
                   enum:
                     - work
@@ -418,33 +418,33 @@ paths:
                   format: binary
       responses:
         '200':
-          description: Contact updated
+          description: Chat updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/contact'
+                $ref: '#/components/schemas/chat'
         '401':
           $ref: '#/components/responses/401'
         '404':
           $ref: '#/components/responses/NotFound'
     delete:
       tags:
-        - contacts
-      summary: Delete a contact by ID
-      operationId: deleteContactById
-      description: Delete a specific contact by its unique ID.
+        - chats
+      summary: Delete a chat by ID
+      operationId: deleteChatById
+      description: Delete a specific chat by its unique ID.
       security:
         - bearerAuth: []
       parameters:
-        - name: contactId
+        - name: chatId
           in: path
           required: true
-          description: ID of the contact to delete
+          description: ID of the chat to delete
           schema:
             type: string
       responses:
         '204':
-          description: Contact deleted
+          description: Chat deleted
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -586,12 +586,12 @@ components:
           type: string
           format: password
           example: newpassword123
-    contact:
+    chat:
       type: object
       required:
         - name
         - phoneNumber
-        - contactType
+        - chatType
       properties:
         name:
           type: string
@@ -605,7 +605,7 @@ components:
         isFavourite:
           type: boolean
           example: false
-        contactType:
+        chatType:
           type: string
           enum:
             - work

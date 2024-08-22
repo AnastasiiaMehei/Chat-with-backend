@@ -6,10 +6,10 @@ import createHttpError from 'http-errors';
 import { UsersCollection } from '../db/models/user.js';
 import { randomBytes } from 'crypto';
 import jwt from 'jsonwebtoken';
-import { SMTP, TEMPLATES_DIR } from '../constants/index.js';
+import { SMTP, TEMPLATES_DIR } from '../chats/index.js';
 import { env } from '../utils/env.js';
 import { sendEmail } from '../utils/sendMail.js';
-import { FIFTEEN_MINUTES, ONE_DAY } from '../constants/index.js';
+import { FIFTEEN_MINUTES, ONE_DAY } from '../chats/index.js';
 import { SessionsCollection } from '../db/models/session.js';
 export const registerUser = async (payload) => {
   const user = await UsersCollection.findOne({ email: payload.email });

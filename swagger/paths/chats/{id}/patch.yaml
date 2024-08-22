@@ -1,21 +1,21 @@
-# /swagger/paths/contacts/{id}/patch.yaml
+# /swagger/paths/chats/{id}/patch.yaml
 
 tags:
-  - contacts
-summary: Update a contact by ID
-operationId: updateContactById
-description: Update a specific contact by its unique ID.
+  - chats
+summary: Update a chat by ID
+operationId: updateChatById
+description: Update a specific chat by its unique ID.
 security:
   - bearerAuth: []
 parameters:
   - name: id
     in: path
     required: true
-    description: ID of the contact to update
+    description: ID of the chat to update
     schema:
       type: string
 requestBody:
-  description: Contact data to update
+  description: Chat data to update
   required: true
   content:
     multipart/form-data:
@@ -24,25 +24,18 @@ requestBody:
         properties:
           name:
             type: string
-          phoneNumber:
+          surname:
             type: string
-          email:
-            type: string
-          isFavourite:
-            type: boolean
-          contactType:
-            type: string
-            enum: ['work', 'home', 'personal']
           photo:
             type: string
             format: binary
 responses:
   '200':
-    description: Contact updated
+    description: Chat updated
     content:
       application/json:
         schema:
-          $ref: '../../../components/schemas/contact.yaml'
+          $ref: '../../../components/schemas/chat.yaml'
   '404':
     $ref: '../../../components/responses/NotFound.yaml'
   '401':

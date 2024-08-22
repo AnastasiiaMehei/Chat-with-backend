@@ -1,0 +1,16 @@
+# /swagger/components/schemas/chat.yaml
+
+type: object
+required:
+  - name
+  - surname
+properties:
+  name:
+    type: string
+    example: 'John'
+    surname:
+    type: string
+    example: 'Doe'
+  photo:
+    type: string
+    example: 'http://example.com/photo.jpg'

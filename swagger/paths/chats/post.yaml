@@ -1,0 +1,53 @@
+# /swagger/paths/chats/post.yaml
+
+tags:
+  - chats
+summary: Create a new chat
+operationId: createChat
+description: 'Create a new chat with payload'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - name
+          - surname
+        properties:
+          name:
+            description: "Chat's name"
+            type: string
+            example: 'John '
+          surname:
+            description: "Chat's name"
+            type: string
+            example: 'Doe'
+            photo:
+            description: "Chat's photo"
+            type: string
+            format: binary
+responses:
+  '201':
+    description: Creates a chat
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully created a chat!
+            data:
+              type: object
+              $ref: '../../components/schemas/chat.yaml'
+  '401':
+    $ref: '../../components/responses/401.yaml'

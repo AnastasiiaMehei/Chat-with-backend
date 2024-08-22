@@ -4,7 +4,7 @@ import createHttpError from 'http-errors';
 import swaggerUI from 'swagger-ui-express';
 import fs from 'node:fs';
 
-import { SWAGGER_PATH } from '../constants/index.js';
+import { SWAGGER_PATH } from '../chats/index.js';
 
 export const swaggerDocs = () => {
   try {
