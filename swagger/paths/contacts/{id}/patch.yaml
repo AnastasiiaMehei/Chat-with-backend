@@ -1,0 +1,49 @@
+# /swagger/paths/contacts/{id}/patch.yaml
+
+tags:
+  - contacts
+summary: Update a contact by ID
+operationId: updateContactById
+description: Update a specific contact by its unique ID.
+security:
+  - bearerAuth: []
+parameters:
+  - name: id
+    in: path
+    required: true
+    description: ID of the contact to update
+    schema:
+      type: string
+requestBody:
+  description: Contact data to update
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+          phoneNumber:
+            type: string
+          email:
+            type: string
+          isFavourite:
+            type: boolean
+          contactType:
+            type: string
+            enum: ['work', 'home', 'personal']
+          photo:
+            type: string
+            format: binary
+responses:
+  '200':
+    description: Contact updated
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/contact.yaml'
+  '404':
+    $ref: '../../../components/responses/NotFound.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'

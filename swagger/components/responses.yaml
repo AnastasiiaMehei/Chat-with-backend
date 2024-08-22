@@ -1,0 +1,27 @@
+# /swagger/components/responses.yaml
+
+responses:
+  NotFound:
+    description: Entity not found.
+    content:
+      application/json:
+        schema:
+          $ref: './schemas.yaml#/schemas/ErrorResponse'
+  IllegalInput:
+    description: Illegal input for operation.
+    content:
+      application/json:
+        schema:
+          $ref: './schemas.yaml#/schemas/ErrorResponse'
+  GeneralError:
+    description: General Error
+    content:
+      application/json:
+        schema:
+          $ref: './schemas.yaml#/schemas/ErrorResponse'
+  Unauthorized:
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: './schemas.yaml#/schemas/ErrorResponse'

@@ -1,0 +1,31 @@
+# /swagger/paths/auth/login.yaml
+
+post:
+  tags:
+    - auth
+  summary: Login a user
+  operationId: loginUser
+  description: Login a user with the provided credentials.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/LoginUserRequest'
+  responses:
+    '200':
+      description: Successfully logged in a user
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas.yaml#/schemas/LoginResponse'
+    '400':
+      $ref: '../../components/responses.yaml#/responses/IllegalInput'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+    '500':
+      $ref: '../../components/responses.yaml#/responses/GeneralError'

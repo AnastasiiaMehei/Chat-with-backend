@@ -1,0 +1,7 @@
+# /swagger/components/responses/NotFound.yaml
+
+description: Entity not found
+content:
+  application/json:
+    schema:
+      $ref: '../schemas.yaml#/schemas/ErrorResponse'

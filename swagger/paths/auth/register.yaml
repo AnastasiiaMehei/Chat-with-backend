@@ -1,0 +1,31 @@
+# /swagger/paths/auth/register.yaml
+
+post:
+  tags:
+    - auth
+  summary: Register a new user
+  operationId: registerUser
+  description: Register a new user with the provided details.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/RegisterUserRequest'
+  responses:
+    '201':
+      description: Successfully registered a user
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas.yaml#/schemas/UserResponse'
+    '400':
+      $ref: '../../components/responses.yaml#/responses/IllegalInput'
+    '409':
+      description: Email in use
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+    '500':
+      $ref: '../../components/responses.yaml#/responses/GeneralError'

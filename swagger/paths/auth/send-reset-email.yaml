@@ -1,0 +1,29 @@
+# /swagger/paths/auth/send-reset-email.yaml
+
+post:
+  tags:
+    - auth
+  summary: Send password reset email
+  operationId: sendResetEmail
+  description: Send a password reset email to the user.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/SendResetEmailRequest'
+  responses:
+    '200':
+      description: Reset password email has been successfully sent
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas.yaml#/schemas/SuccessResponse'
+    '404':
+      description: User not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+    '500':
+      $ref: '../../components/responses.yaml#/responses/GeneralError'

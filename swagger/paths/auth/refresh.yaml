@@ -1,0 +1,25 @@
+# /swagger/paths/auth/refresh.yaml
+
+post:
+  tags:
+    - auth
+  summary: Refresh user session
+  operationId: refreshUserSession
+  description: Refresh the session of the currently authenticated user.
+  responses:
+    '200':
+      description: Successfully refreshed a session
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas.yaml#/schemas/LoginResponse'
+    '400':
+      $ref: '../../components/responses.yaml#/responses/IllegalInput'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+    '500':
+      $ref: '../../components/responses.yaml#/responses/GeneralError'
