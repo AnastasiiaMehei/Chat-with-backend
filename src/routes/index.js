@@ -4,7 +4,7 @@ import authRouter from './auth.js';
 
 const router = Router();
 
-router.use('/chat', chatsRouter);
+router.use('/chats', chatsRouter);
 router.use('/auth', authRouter);
 
 export default router;
