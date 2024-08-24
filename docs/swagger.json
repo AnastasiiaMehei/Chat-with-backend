@@ -14,7 +14,7 @@
       "url": "http://localhost:8080"
     },
     {
-      "url": "https://nodejs-hw-mongodb-2-wxns.onrender.com"
+      "url": "https://chat-with-backend.onrender.com"
     }
   ],
   "tags": [
@@ -29,9 +29,7 @@
   "paths": {
     "/auth/register": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Register a new user",
         "operationId": "registerUser",
         "description": "Register a new user with the provided details.",
@@ -77,9 +75,7 @@
     },
     "/auth/login": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Login a user",
         "operationId": "loginUser",
         "description": "Login a user with the provided credentials.",
@@ -125,9 +121,7 @@
     },
     "/auth/logout": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Logout a user",
         "operationId": "logoutUser",
         "description": "Logout the currently authenticated user.",
@@ -156,9 +150,7 @@
     },
     "/auth/refresh": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Refresh user session",
         "operationId": "refreshUserSession",
         "description": "Refresh the session of the currently authenticated user.",
@@ -194,9 +186,7 @@
     },
     "/auth/send-reset-email": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Send password reset email",
         "operationId": "sendResetEmail",
         "description": "Send a password reset email to the user.",
@@ -239,9 +229,7 @@
     },
     "/auth/reset-pwd": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Reset password",
         "operationId": "resetPassword",
         "description": "Reset the password of the user using the provided token.",
@@ -294,9 +282,7 @@
     },
     "/chats": {
       "get": {
-        "tags": [
-          "chats"
-        ],
+        "tags": ["chats"],
         "summary": "Get list of chats",
         "operationId": "getChats",
         "description": "Get list of chats with this endpoint",
@@ -336,10 +322,7 @@
             "name": "sortOrder",
             "schema": {
               "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ],
+              "enum": ["asc", "desc"],
               "example": "asc"
             }
           },
@@ -348,11 +331,7 @@
             "name": "type",
             "schema": {
               "type": "string",
-              "enum": [
-                "work",
-                "home",
-                "personal"
-              ],
+              "enum": ["work", "home", "personal"],
               "example": "personal"
             }
           },
@@ -372,11 +351,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
+                  "required": ["status", "message", "data"],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -441,9 +416,7 @@
         }
       },
       "post": {
-        "tags": [
-          "chats"
-        ],
+        "tags": ["chats"],
         "summary": "Create a new chat",
         "operationId": "createChat",
         "description": "Create a new chat with payload",
@@ -457,11 +430,7 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "name",
-                  "phoneNumber",
-                  "chatType"
-                ],
+                "required": ["name", "phoneNumber", "chatType"],
                 "properties": {
                   "name": {
                     "description": "Chat's name",
@@ -486,11 +455,7 @@
                   "chatType": {
                     "description": "Chat's type",
                     "type": "string",
-                    "enum": [
-                      "work",
-                      "home",
-                      "personal"
-                    ]
+                    "enum": ["work", "home", "personal"]
                   },
                   "photo": {
                     "description": "Chat's photo",
@@ -509,11 +474,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
+                  "required": ["status", "message", "data"],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -540,9 +501,7 @@
     },
     "/chats/{chatId}": {
       "get": {
-        "tags": [
-          "chats"
-        ],
+        "tags": ["chats"],
         "summary": "Get a chat by ID",
         "operationId": "getChatById",
         "description": "Retrieve a specific chat by its unique ID.",
@@ -582,9 +541,7 @@
         }
       },
       "patch": {
-        "tags": [
-          "chats"
-        ],
+        "tags": ["chats"],
         "summary": "Update a chat by ID",
         "operationId": "updateChatById",
         "description": "Update a specific chat by its unique ID.",
@@ -626,11 +583,7 @@
                   },
                   "chatType": {
                     "type": "string",
-                    "enum": [
-                      "work",
-                      "home",
-                      "personal"
-                    ]
+                    "enum": ["work", "home", "personal"]
                   },
                   "photo": {
                     "type": "string",
@@ -661,9 +614,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "chats"
-        ],
+        "tags": ["chats"],
         "summary": "Delete a chat by ID",
         "operationId": "deleteChatById",
         "description": "Delete a specific chat by its unique ID.",
@@ -773,11 +724,7 @@
     "schemas": {
       "RegisterUserRequest": {
         "type": "object",
-        "required": [
-          "name",
-          "email",
-          "password"
-        ],
+        "required": ["name", "email", "password"],
         "properties": {
           "name": {
             "type": "string",
@@ -828,10 +775,7 @@
       },
       "LoginUserRequest": {
         "type": "object",
-        "required": [
-          "email",
-          "password"
-        ],
+        "required": ["email", "password"],
         "properties": {
           "email": {
             "type": "string",
@@ -856,9 +800,7 @@
       },
       "SendResetEmailRequest": {
         "type": "object",
-        "required": [
-          "email"
-        ],
+        "required": ["email"],
         "properties": {
           "email": {
             "type": "string",
@@ -882,10 +824,7 @@
       },
       "ResetPasswordRequest": {
         "type": "object",
-        "required": [
-          "token",
-          "password"
-        ],
+        "required": ["token", "password"],
         "properties": {
           "token": {
             "type": "string",
@@ -900,11 +839,7 @@
       },
       "chat": {
         "type": "object",
-        "required": [
-          "name",
-          "phoneNumber",
-          "chatType"
-        ],
+        "required": ["name", "phoneNumber", "chatType"],
         "properties": {
           "name": {
             "type": "string",
@@ -924,11 +859,7 @@
           },
           "chatType": {
             "type": "string",
-            "enum": [
-              "work",
-              "home",
-              "personal"
-            ]
+            "enum": ["work", "home", "personal"]
           },
           "photo": {
             "type": "string",
