@@ -13,4 +13,4 @@ export const updateChatSchema = Joi.object({
   messages: Joi.array().items(Joi.string()).optional(),
   photo: Joi.string().uri().optional().allow(null),
   lastMessageDate: Joi.date().optional(),
-}).min(1); // Ensure at least one field is provided for update
+}).min(1);
